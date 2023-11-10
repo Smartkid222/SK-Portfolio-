@@ -296,76 +296,69 @@ article.active {
 /*-----------------------------------*\
   #PRELOADER
 \*-----------------------------------*/
-.ap {
-	width: 8em;
-	height: 16em;
-}
-.ap__ring {
-	stroke: hsla(var(--hue),10%,10%,0.15);
-	transition: stroke 0.3s;
-}
-.ap__worm1,
-.ap__worm2 {
-	animation-duration: 3s;
-	animation-iteration-count: infinite;
-}
-.ap__worm1 {
-	animation-name: worm1;
-}
-.ap__worm2 {
-	animation-name: worm2;
-	visibility: hidden;
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: hsla(355, 20%, 12%, 0.5);
+    backdrop-filter: blur(20px);
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--bg: hsl(var(--hue),10%,10%);
-		--fg: hsl(var(--hue),10%,90%);
-	}
-	.ap__ring {
-		stroke: hsla(var(--hue),10%,90%,0.1);
-	}
+.container{
+    position: absolute;
+    top: 320px;
+    height: 100px;
+    width: 100px;
+    left: 720px;
+    animation: rotate 3.4s linear infinite;
 }
-
-@keyframes worm1 {
-	from {
-		animation-timing-function: ease-in-out;
-		stroke-dashoffset: -87.96;
-	}
-	20% {
-		animation-timing-function: ease-in;
-		stroke-dashoffset: 0;
-	}
-	60% {
-		stroke-dashoffset: -791.68;
-		visibility: visible;
-	}
-	60.1%,
-	to {
-		stroke-dashoffset: -791.68;
-		visibility: hidden;
-	}
+.loaderdot{
+    position: relative;
+    top: 88px;
+    left: 38px;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: #fff;
 }
-@keyframes worm2 {
-	from,
-	60% {
-		stroke-dashoffset: -87.96;
-		visibility: hidden;
-	}
-	60.1% {
-		animation-timing-function: cubic-bezier(0,0,0.5,0.75);
-		stroke-dashoffset: -87.96;
-		visibility: visible;
-	}
-	77% {
-		animation-timing-function: cubic-bezier(0.5,0.25,0.5,0.88);
-		stroke-dashoffset: -340;
-		visibility: visible;
-	}
-	to {
-		stroke-dashoffset: -669.92;
-		visibility: visible;
-	}
+@keyframes rotate{
+    30%{
+        transform: rotate(220deg);
+    }
+    40%{
+        transform: rotate(450deg);
+    }
+    75%{
+        transform: rotate(720deg);
+        opacity: 1;
+    }
+    76%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.container:nth-child(2){
+    animation-delay: .1s;
+}
+.container:nth-child(3){
+    animation-delay: .2s;
+}
+.container:nth-child(4){
+    animation-delay: .3s;
+}
+.container:nth-child(5){
+    animation-delay: .4s;
+}
+.container:nth-child(6){
+    animation-delay: .5s;
 }
 
 
